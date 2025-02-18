@@ -25,6 +25,12 @@ jobs:
       - name: Build with Maven          # Nombre del paso.
         run: mvn clean package          # Construir proyecto, generando .war.
 
+        # 4️⃣ Ejecutar pruebas unitarias y integración con Maven
+      - name: Build and test with Maven
+        run: |
+            mvn clean package
+            mvn test
+
       # 4️⃣ Copiar el archivo .war a la instancia EC2
       - name: Copy .war to EC2          # Nombre del paso.
         uses: appleboy/scp-action@v0.1.5  # Copiar archivos a servidor remoto
